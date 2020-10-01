@@ -7,5 +7,5 @@ spring:
 
 logging:
   level:
-    org.apache.http.impl: debug
-    feign: debug
+    org.apache.http.impl: warn
+    feign: warn
