@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: zuulserver
+  cloud:
+    config:
+      uri: ${SPRING_CLOUD_CONFIG_URI}
+
+logging:
+  level:
+    org.apache.http.impl: debug
+    feign: debug
