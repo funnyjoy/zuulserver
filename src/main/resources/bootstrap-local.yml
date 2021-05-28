@@ -4,9 +4,15 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
-      label: zuul
 
 logging:
   level:
     org.apache.http.impl: warn
     feign: warn
+#    org:
+#      springframework:
+#        cloud:
+#          netflix: trace
+#      apache:
+#        http:
+#          wire: debug
