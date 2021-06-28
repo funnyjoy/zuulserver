@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    
+	<springProfile name="local">
+    	<property name="LOG_PATH" value="C:/test/jpetstore" />
+    </springProfile>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+    
+	<appender name="dailyRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/zuulserver-%d{yyyy-MM-dd}-%i-json.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+
+	<springProfile name="local">
+		<root level="info">
+			<appender-ref ref="CONSOLE" />
+			<appender-ref ref="dailyRollingFileAppender" />
+		</root>
+	</springProfile>
+	<springProfile name="dev">
+		<root level="info">
+			<appender-ref ref="dailyRollingFileAppender" />
+		</root>
+	</springProfile>
+	<springProfile name="prod">
+		<root level="info">
+			<appender-ref ref="dailyRollingFileAppender" />
+		</root>
+	</springProfile>
+	<springProfile name="test">
+		<root level="info">
+			<appender-ref ref="dailyRollingFileAppender" />
+		</root>
+	</springProfile>
+</configuration>
