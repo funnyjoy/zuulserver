@@ -11,7 +11,7 @@
 	<groupId>boomupmsa</groupId>
 	<artifactId>zuulserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>zuulserver</name>
 	<description>Zuul Server</description>
 
