@@ -6,6 +6,15 @@
 	<springProfile name="local">
     	<property name="LOG_PATH" value="C:/test/jpetstore" />
     </springProfile>
+	<springProfile name="dev">
+    	<property name="LOG_PATH" value="${LOG_PATH}" />
+	</springProfile>
+	<springProfile name="prod">
+    	<property name="LOG_PATH" value="${LOG_PATH}" />
+	</springProfile>
+	<springProfile name="test">
+    	<property name="LOG_PATH" value="${LOG_PATH}" />
+	</springProfile>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
